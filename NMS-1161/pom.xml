@@ -7,14 +7,14 @@
     <parent>
         <artifactId>BPS</artifactId>
         <groupId>net.almostmc</groupId>
-        <version>0.1.0-SNAPSHOT</version>
+        <version>0.1.0b</version>
         <relativePath>../</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.almostmc.BungeePlayerSync</groupId>
     <artifactId>NMS-1161</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0b</version>
 
     <build>
         <plugins>
@@ -35,7 +35,7 @@
         <dependency>
             <groupId>net.almostmc.BungeePlayerSync</groupId>
             <artifactId>NMS-Shared</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.1.0b</version>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>

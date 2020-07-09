@@ -6,8 +6,17 @@
 
     <groupId>net.almostmc</groupId>
     <artifactId>BPS</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0b</version>
     <packaging>pom</packaging>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub gIsForGravity Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/gIsForGravity/BungeePlayerSync</url>
+        </repository>
+    </distributionManagement>
+
 
     <modules>
         <module>BPS</module>
