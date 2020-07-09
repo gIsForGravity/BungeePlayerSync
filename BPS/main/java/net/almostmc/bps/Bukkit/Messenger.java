@@ -12,7 +12,7 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 
 import java.util.UUID;
 
-public class Messenger implements PluginMessageListener {
+public class Messenger implements PluginMessageListener { // Manages RPCs and stuff
     @Override
     public void onPluginMessageReceived(String channel, Player player, byte[] message) {
         if (!channel.equals("BungeeCord")) {
@@ -24,15 +24,23 @@ public class Messenger implements PluginMessageListener {
             String version = in.readUTF();
             if (version.equals(BukkitPlugin.pluginVersion)) {
                 switch (in.readUTF()) { // Command
-                    case "sendLocationMessage":
+                    case "sendLocationMessage": {
                         // SendLocationMessage RPC
                         UUID playerUUID = UUID.fromString(in.readUTF());
                         Location playerLocation = new Location(Bukkit.getWorlds().get(0), // World 0
                                 in.readDouble(), in.readDouble(), in.readDouble(), // X, Y, and Z
                                 in.readFloat(), in.readFloat());
-                        break;
-                    case "wasup":
-                        break;
+                        VirtualPlayer.GetVirtualPlayer(playerUUID).Move(playerLocation);
+                    } break;
+
+                    case "sendCreationMessage": {
+                        // SendCreationMessage
+                        UUID playerUUID = UUID.fromString(in.readUTF());
+                        Location playerLocation = new Location(Bukkit.getWorlds().get(0), // World 0
+                                in.readDouble(), in.readDouble(), in.readDouble(), // X, Y, and Z
+                                in.readFloat(), in.readFloat());
+                        new VirtualPlayer(playerUUID, playerLocation);
+                    } break;
                 }
             }
         }
@@ -54,13 +62,27 @@ public class Messenger implements PluginMessageListener {
         Object[] args = new Object[6]; // Used for message arguments
 
         args[0] = uuid; // Tell server the UUID of fake player
-        args[1] = location.getX();
+        args[1] = location.getX(); // Tell remote server location and rotation of fake player
         args[2] = location.getY();
         args[3] = location.getZ();
         args[4] = location.getYaw();
         args[5] = location.getPitch();
 
         sendBungeeRPC("sendLocationMessage", args); // Run RPC sendLocationMessage
+    }
+
+    // Create new fake player on remote server
+    public static void sendCreationMessage(String uuid, Location location) {
+        Object[] args = new Object[6]; // Used for message arguments
+
+        args[0] = uuid; // Tell server the UUID of fake player
+        args[1] = location.getX(); // Tell remote server location and rotation of fake player
+        args[2] = location.getY();
+        args[3] = location.getZ();
+        args[4] = location.getYaw();
+        args[5] = location.getPitch();
+
+        sendBungeeRPC("sendCreationMessage", args); // Run RPC sendCreationMessage
     }
 
     private static void sendBungeeRPC(String rpc, Object[] args) {
