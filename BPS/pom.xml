@@ -12,7 +12,7 @@
     <parent>
         <artifactId>BPS</artifactId>
         <groupId>net.almostmc</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>0.1.0-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
 
@@ -41,19 +41,19 @@
         <dependency>
             <groupId>net.almostmc.BungeePlayerSync</groupId>
             <artifactId>NMS-Shared</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>0.1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>net.almostmc.BungeePlayerSync</groupId>
             <artifactId>NMS-1161</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>0.1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>net.almostmc.BungeePlayerSync</groupId>
             <artifactId>NMS-1152</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>0.1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <!-- Spigot API for Spigot Plugin (you need to have run BuildTools) -->
